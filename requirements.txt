@@ -1,0 +1,12 @@
+langchain_community
+langchain
+pypdf
+sentence_transformers
+streamlit
+streamlit-pdf-viewer
+huggingface-hub
+langchain_huggingface
+pdfplumber
+faiss-cpu
+streamlit_chat
+langchain-anthropic
