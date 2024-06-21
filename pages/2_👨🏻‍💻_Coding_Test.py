@@ -91,11 +91,10 @@ To start the interview Click on the Start Button ▶️.
 # Initialize interview questions
 prompt_template_1 = PromptTemplate.from_template(
     template="""Generate only one hard level coding interview question.
-    Questions can be from any of the following topics: Arrays, String,  LinkedList, Stack, Queue but make sure you generate only one question at at time.
-    Try to provide new questions every time.
+    Questions can be from any of the following topics: Arrays, String,  LinkedList, Stack, Queue.
     Do not include any approaches, brief, or introduction about the question.
     Provide the question with the constraints.
-   
+    Don't repeat questions every time.
     
 Question 1:
 """
@@ -103,7 +102,7 @@ Question 1:
 
 prompt_template_2 = PromptTemplate.from_template(
     template="""Generate only one hard level coding interview question.
-    Questions can be from any of the following topics:  Graph, Tree,Dynamic Programming,Greedy algorithms but make sure you generate only one question at at time.
+    Questions can be from any of the following topics:  Graph, Tree,Dynamic Programming,Greedy algorithms.
     Try to provide new questions every time.
     Do not include any approaches, brief, or introduction or Note about the question.
     Provide the question with the constraints.
