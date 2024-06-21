@@ -4,16 +4,16 @@ import io
 import contextlib
 import subprocess
 from langchain.prompts import PromptTemplate
-# from dotenv import load_dotenv
-# import os
+from dotenv import load_dotenv
+import os
 from langchain_huggingface import HuggingFaceEndpoint
 
 # Load environment variables
-# load_dotenv()
+load_dotenv()
 
 # Initialize Hugging Face endpoint
-# HF_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
-HF_TOKEN = st.secrets["HUGGINGFACE_ACCESS_TOKEN"]
+HF_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
+# HF_TOKEN = st.secrets["HUGGINGFACE_ACCESS_TOKEN"]
 repo_id = "mistralai/Mistral-7B-Instruct-v0.2"
 
 hf = HuggingFaceEndpoint(
@@ -90,8 +90,8 @@ To start the interview Click on the Start Button ▶️.
 
 # Initialize interview questions
 prompt_template_1 = PromptTemplate.from_template(
-    template="""Generate only one hard level coding interview question.
-    Questions can be from any of the following topics: Arrays, String,  LinkedList, Stack, Queue.
+    template="""Generate only one easy level coding interview question.
+    Questions can be from any of the following topics: Arrays, String,  LinkedList, Stack, Queue,Graph, Tree.
     Do not include any approaches, brief, or introduction about the question.
     Provide the question with the constraints.
     Don't repeat questions every time.
@@ -102,7 +102,7 @@ Question 1:
 
 prompt_template_2 = PromptTemplate.from_template(
     template="""Generate only one hard level coding interview question.
-    Questions can be from any of the following topics:  Graph, Tree,Dynamic Programming,Greedy algorithms.
+    Questions can be from any of the following topics:  Arrays, String,  LinkedList, Stack, Queue,Graph, Tree.
     Try to provide new questions every time.
     Do not include any approaches, brief, or introduction or Note about the question.
     Provide the question with the constraints.
@@ -133,7 +133,7 @@ Evaluate the candidate's response to the following interview question:
 Candidate's Response:
 {response}
 
-Feedback: provide the feedback and also include sample answer
+Feedback: Firstly provide the feedback for the solution and dont accept any code with syntax errors  and  include sample code
 {feedback}
 """
 # Initialize session state
