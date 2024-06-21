@@ -92,9 +92,10 @@ To start the interview Click on the Start Button ▶️.
 prompt_template_1 = PromptTemplate.from_template(
     template="""Generate only one hard level coding interview question.
     Questions can be from any of the following topics: Arrays, String,  LinkedList, Stack, Queue.
+    Try to provide new questions every time.
     Do not include any approaches, brief, or introduction about the question.
     Provide the question with the constraints.
-    Don't repeat questions every time.
+   
     
 Question 1:
 """
