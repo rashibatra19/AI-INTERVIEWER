@@ -4,16 +4,16 @@ import io
 import contextlib
 import subprocess
 from langchain.prompts import PromptTemplate
-from dotenv import load_dotenv
-import os
+# from dotenv import load_dotenv
+# import os
 from langchain_huggingface import HuggingFaceEndpoint
 
 # Load environment variables
-load_dotenv()
+# load_dotenv()
 
 # Initialize Hugging Face endpoint
-HF_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
-# HF_TOKEN = st.secrets["HUGGINGFACE_ACCESS_TOKEN"]
+# HF_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
+HF_TOKEN = st.secrets["HUGGINGFACE_ACCESS_TOKEN"]
 repo_id = "mistralai/Mistral-7B-Instruct-v0.2"
 
 hf = HuggingFaceEndpoint(
