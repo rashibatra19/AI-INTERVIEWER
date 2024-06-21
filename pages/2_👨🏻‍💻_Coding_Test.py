@@ -94,6 +94,7 @@ prompt_template_1 = PromptTemplate.from_template(
     Questions can be from any of the following topics: Arrays, String,  LinkedList, Stack, Queue.
     Do not include any approaches, brief, or introduction about the question.
     Provide the question with the constraints.
+    Don't repeat questions every time.
     
 Question 1:
 """
@@ -104,6 +105,7 @@ prompt_template_2 = PromptTemplate.from_template(
     Questions can be from any of the following topics:  Graph, Tree,Dynamic Programming,Greedy algorithms.
     Do not include any approaches, brief, or introduction or Note about the question.
     Provide the question with the constraints.
+    Don't repeat questions every time.
     
 Question 2:
 """
