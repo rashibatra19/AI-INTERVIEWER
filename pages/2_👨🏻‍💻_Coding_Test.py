@@ -133,7 +133,6 @@ Candidate's Response:
 Feedback: provide the feedback and also include sample answer
 {feedback}
 """
-
 # Initialize session state
 if 'question_index' not in st.session_state:
     st.session_state.question_index = -1  # Start with -1 to indicate that the start button hasn't been clicked
@@ -156,6 +155,7 @@ languages = ['python', 'java', 'c++']
 if st.session_state.question_index == -1:
     if st.button("Start"):
         st.session_state.question_index = 0  # Move to the first question
+        st.experimental_rerun()
 
 # Display current question and editor
 if st.session_state.question_index >= 0 and st.session_state.question_index < len(questions):
@@ -178,7 +178,8 @@ if st.session_state.question_index >= 0 and st.session_state.question_index < le
     )
 
     # Button to submit code
-    if st.button("Run"):
+    run_clicked = st.button("Run")
+    if run_clicked:
         if user_code.strip() != "":
             # Save the code to session state
             st.session_state.code_storage[selected_language][st.session_state.question_index] = user_code
@@ -190,7 +191,8 @@ if st.session_state.question_index >= 0 and st.session_state.question_index < le
             st.warning("Please enter some code before submitting.")
 
     # Button to submit answer and receive feedback
-    if st.button("Submit Answer for Feedback"):
+    submit_clicked = st.button("Submit Answer for Feedback")
+    if submit_clicked:
         if user_code.strip() != "":
             # Save the code to session state
             st.session_state.code_storage[selected_language][st.session_state.question_index] = user_code
@@ -211,21 +213,20 @@ if st.session_state.question_index >= 0 and st.session_state.question_index < le
 
     # Button to move to the next question
     if st.session_state.question_index < len(questions) - 1:
-        if st.session_state.get(f'answered_{st.session_state.question_index}', False):
-            if st.button("Next Question"):
+        next_question_clicked = st.button("Next Question")
+        if next_question_clicked:
+            if not st.session_state.get(f'answered_{st.session_state.question_index}', False):
+                st.warning("Please submit your answer and receive feedback before moving on to the next question.")
+            else:
                 st.session_state.question_index += 1
                 st.session_state[f'answered_{st.session_state.question_index}'] = False  # Reset next question state
-                st.rerun()
-        else:
-            st.warning("Please submit your answer and receive feedback before moving on to the next question.")
+                st.experimental_rerun()
+    else:
+        st.success("**You have completed all the questions!**")
 
     # Button to reset the interview
-    if st.button("Reset Interview"):
+    reset_clicked = st.button("Reset Interview")
+    if reset_clicked:
         st.session_state.question_index = -1  # Reset to initial state
         st.session_state.code_storage = {'python': {}, 'java': {}, 'c++': {}}
-        st.rerun()
-
-# Display success message only if all questions are completed
-if st.session_state.question_index == len(questions):
-    st.success("**You have completed all the questions!**")
-
+        st.experimental_rerun()
