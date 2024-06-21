@@ -10,3 +10,4 @@ pdfplumber
 faiss-cpu
 streamlit_chat
 langchain-anthropic
+streamlit_option_menu
