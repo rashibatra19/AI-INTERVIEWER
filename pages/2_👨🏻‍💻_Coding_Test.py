@@ -102,7 +102,7 @@ Question 1:
 prompt_template_2 = PromptTemplate.from_template(
     template="""Generate only one hard level coding interview question.
     Questions can be from any of the following topics:  Graph, Tree,Dynamic Programming,Greedy algorithms.
-    Do not include any approaches, brief, or introduction about the question.
+    Do not include any approaches, brief, or introduction or Note about the question.
     Provide the question with the constraints.
     
 Question 2:
